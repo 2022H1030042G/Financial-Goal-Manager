@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Goal Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <hr>
+    <h2>Save / Add Micro Savings</h2>
+
+    <form action="#" th:action="@{/saveSavings}" th:object="${micro_savings}"
+          method="POST">
+        <div class="form-group">
+        Enter Amount<input type="text" th:field="*{micros}"
+                        placeholder="Goal Name" class="form-control mb-4 col-4">
+           <!-- <p th:if="${#fields.hasErrors('micros')}" th:errors="*{micros}"></p>-->
+        </div>
+        <div class="form-group">
+        Goal  <select th:field = "*{item}" required>
+        <th:block th:each = "ite : ${itemList}">
+            <option th:text = "${ite.goal}" th:value = "${ite.id}"/>
+        </th:block>
+    </select>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary"> Add Amount</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/}"> Back to Goals</a>
+</div>
+</body>
+</html>

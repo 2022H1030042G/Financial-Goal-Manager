@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Goal Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <hr>
+    <h2>Micro Savings List</h2>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr th:style="'background: #C19A6B;'">
+            <th>Id</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody th:each="item : ${savingsList}">
+        <tr >
+            <td th:text="${item.item.goal}"></td>
+            <td th:text="${item.micros}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <a th:href = "@{/}"> Back to Goals</a>
+</div>
+</body>
+</html>

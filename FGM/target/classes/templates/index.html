@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Goal Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container my-2">
+    <h2>Goals Pending</h2>
+    <a th:href="@{/showNewItemForm}" class="btn btn-outline-secondary"> Create Goals </a>
+
+    <a th:href="@{/showNewMicroSavingsForm}" class="btn btn-outline-secondary"> Add Micro Savings </a>
+    <a th:href="@{/ListMicroSavings}" class="btn btn-outline-secondary"> List Micro Savings </a>
+<br><br>
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr  th:style="'background: #C19A6B;'">
+            <th>Goal Name</th>
+            <th>Target Amount</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody th:each="item : ${listItem}">
+        <tr >
+            <td th:text="${item.goal}"></td>
+            <td th:text="${item.target_amt}"></td>
+            <td>
+                <a th:href="@{/deleteItem/{id}(id=${item.id})}" class="btn btn-outline-danger">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
